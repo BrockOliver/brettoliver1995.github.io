@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Total Number of Elk Hunting days in Montana",
+  "description": "Total Number of Elk Hunting days in Montana",
+  "data": {"url": "data/elk_hunt_total_days.csv"},
+  "width": 700,
+  "height": 500,
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+  "encoding": {
+    "x": {"field": "year","type": "temporal","title": "Year"},
+    "y": {"field": "total_days", "type": "quantitative", "title":"Total Elk Hunting Days",
+    "scale": {"zero": false}}
+  }
+}

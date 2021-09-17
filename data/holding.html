@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <title>Montana Elk Hunting</title>
+</head>
+
+<center>
+  <h5>Hypothesis: Elk Hunting has increased in Montana due to out of state interest.</h5>
+</center>
+<body>
+
+<div id="vis_time_series"></div>
+
+<table>
+  <thead>
+  <tr>
+    <th colspan="2">Side by side comparison</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><div id="vis_bar_2010"></div></td>
+    <td><div id="vis_bar_2020"></div></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<p style="font-size:8px">
+<p style="font-size:16px">
+  Time series and bar graph data from: <a href="https://myfwp.mt.gov/fwpPub/harvestReports">https://myfwp.mt.gov/fwpPub/harvestReports</a></p>
+<p style="font-size:16px">
+
+  *To access the same data that was used in this study, select the following parameters from the Harvest Estimates Search Menu:<br>
+  Species: Elk <br>
+  Start Year: 2004 <br>
+  End Year: 2020 <br>
+  District: All <br>
+
+<p style="font-size:16px"><i>
+  The number of elk hunting days indicate the total number of days that elk were collectivley hunted in<br>
+  by all hunters in state of Montana in a given year. This is further broken up by Montana residency status to determine<br>
+  if out of state hunters are contributing to increased hunt days in Montana. Residents are defined as those<br>
+  who legally call Montana home. Non-residents are those who legally reside in a different state..</font></p></i>
+
+<script>
+  const spec_time_series = "elk_hunt_days_total_scatter.vl.json";
+  vegaEmbed("#vis_time_series", spec_time_series)
+          .then(result => console.log(result))
+          .catch(console.warn);
+
+  const spec_bar_2010 = "elk_hunt_days_by_residency_bar.vl.json";
+  vegaEmbed("#vis_bar_2010", spec_bar_2010)
+          .then(result => console.log(result))
+          .catch(console.warn);
+
+  const spec_bar = "elk_hunt_days_by_residency_normalized.vl.json";
+  vegaEmbed("#vis_bar", spec_bar)
+          .then(result => console.log(result))
+          .catch(console.warn);
+
+</script>
+</body>
