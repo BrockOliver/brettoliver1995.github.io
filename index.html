@@ -1,68 +1,16 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-10">
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-    <title>MT Elk Hunting</title>
+    <meta charset="UTF-8">
+    <title>Jesse's Visualization stuff.</title>
 </head>
-
-<center>
-    <h5>Hypothesis: Elk Hunting has increased in Montana due to out of state interest.</h5>
-</center>
 <body>
 
-<div id="vis_time_series"></div>
+<h3>CSCI 477 Assignments</h3>
 
-<table>
-    <thead>
-    <tr>
-        <th colspan="2">Hunting by Montana Residency </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><div id="vis_bar_2010"></div></td>
-        <td><div id="vis_bar_2020"></div></td>
-    </tr>
-    </tbody>
-</table>
-
-<div id="vis_bar">
-
-    <p style="font-size: 12px">
-        Time series and bar graph data from: <a href="https://myfwp.mt.gov/fwpPub/harvestReports">https://myfwp.mt.gov/fwpPub/harvestReports</a></p>
-    <p style="font-size:12px">
-        *To access the same data that was used in this study, select the following parameters from the Harvest Estimates Search Menu:<br>
-            Species: Elk <br>
-            Start Year: 2004 <br>
-            End Year: 2020 <br>
-            District: All <br>
-
-
-    <p style="font-size:12px"><i>
-        The number of elk hunting days indicate the total number of days that elk were collectivley hunted<br>
-        by all hunters in the state of Montana in a given year. This is further broken up by Montana residency status to determine<br>
-        if out-of-state hunters are contributing to increased elk hunting days in Montana. Residents are defined as those<br>
-        who legally call Montana home. Non-residents are those who legally reside in a different state..</font></p></i></font></p></i>
-
-    <script>
-        const spec_time_series = "elk_hunt_days_total_scatter.vl.json";
-        vegaEmbed("#vis_time_series", spec_time_series)
-            .then(result => console.log(result))
-            .catch(console.warn);
-
-        const spec_bar_2010 = "elk_hunt_days_by_residency_bar.vl.json";
-        vegaEmbed("#vis_bar_2010", spec_bar_2010)
-            .then(result => console.log(result))
-            .catch(console.warn);
-
-        const spec_bar_2020 = "elk_hunt_days_by_residency_normalized.vl.json";
-        vegaEmbed("#vis_bar_2020", spec_bar_2020)
-            .then(result => console.log(result))
-            .catch(console.warn);
-
-
-    </script>
+<ul>
+    <li><a href="elk_stats.html"> Scatter plot and histogram</a></li>
+    <li><a href="global_snow.html">Raster plot</a></li>
+</ul>
 </body>
+</html>
