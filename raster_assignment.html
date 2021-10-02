@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
+    <title>Rater Assignment</title>
+</head>
+<body>
+<div id="math_raster"></div>
+<div id="geo_raster"></div>
+
+<script>
+
+    const math_spec = "math_raster.vg.json";
+    vegaEmbed("#math_raster", math_spec)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const plot_spec = "raster_plot.vg.json";
+    vegaEmbed("#geo_raster", plot_spec)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+</script>
+</body>
+</html>
