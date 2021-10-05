@@ -34,11 +34,11 @@
       "bind": {"input": "range", "min": 0, "max": 1, "step": 0.01}
     },
     {
-      "name": "levels", "value": 6,
-      "bind": {"input": "range", "min": 2, "max": 12, "step": 1}
+      "name": "levels", "value": 4,
+      "bind": {"input": "range", "min": 2, "max": 8, "step": 1}
     },
     {
-      "name": "stop", "value": 3000
+      "name": "stop", "value": 1
     },
     {
       "name": "step",
@@ -48,12 +48,12 @@
 
   "data": [
     {
-      "name": "precipitation",
-      "url": "data/annual-precip.json"
+      "name": "snow",
+      "url": "data/feb_2019_snow_depth.json"
     },
     {
       "name": "contours",
-      "source": "precipitation",
+      "source": "snow",
       "transform": [
         {
           "type": "isocontour",
@@ -128,7 +128,7 @@
 
   "legends": [
     {
-      "title": "Annual Precipitation (mm)",
+      "title": "Avg February 2019 Snowpack (m)",
       "fill": "color",
       "orient": "bottom",
       "offset": 5,
