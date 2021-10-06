@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
-    <title>Raster Assignment</title>
+    <title>Global Snow</title>
 </head>
 <body>
-<div id="math_raster"></div>
-<div id="geo_raster"></div>
-<div id="local_geo_raster"></div>
+<title>Global snow pack in February 2019</title>
+</head>
 
+    <h5>Hypothesis: Data obtained from NASA's Moderate Resolution Imaging Spectroradiometer (MODIS)<br> is too coarse for use at the mountain range scale  in the continental US.</h5><br> <br>
+<div id="global_raster"></div>
+<div id="continental_raster"></div>
 <script>
-    // Register a discrete color scheme named "basic" that can then be used in Vega specs
-    vega.scheme('basic_johnson', ['#a35e5e', '#768b76', '#393965', '#c2c27c',
-        '#a788a7', '#87adad']);
-
+    vega.scheme('brett_palette', ['#e0b0a4', '#c872f3', '#6582f5', '#5febff']);
     const plot_spec = "raster_plot.vg.json";
-    vegaEmbed("#geo_raster", plot_spec)
+    vegaEmbed("#global_raster", plot_spec)
         // result.view provides access to the Vega View API
         .then(result => console.log(result))
         .catch(console.warn);
-
-    const plot_spec_local = "raster_plot_local.vg.json";
-    vegaEmbed("#local_geo_raster", plot_spec_local)
+    const plot_spec_mt = "MT_snow_raster_plot.vg.json";
+    vegaEmbed("#continental_raster", plot_spec_mt)
         // result.view provides access to the Vega View API
         .then(result => console.log(result))
         .catch(console.warn);
 </script>
+<p style="font-size: 12px">
+    NC4 data for global average snowpack in February 2019 obtained <a href="https://portal.nccs.nasa.gov/datashare/">here:</a></p>
 </body>
 </html>
