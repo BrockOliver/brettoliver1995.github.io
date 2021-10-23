@@ -48,17 +48,17 @@
         who legally call Montana home. Non-residents are those who legally reside in a different state..</font></p></i></font></p></i>
 
     <script>
-        const spec_time_series = "elk_hunt_days_total_scatter.vl.json";
+        const spec_time_series = "hw1/elk_hunt_days_total_scatter.vl.json";
         vegaEmbed("#vis_time_series", spec_time_series)
             .then(result => console.log(result))
             .catch(console.warn);
 
-        const spec_bar_2010 = "elk_hunt_days_by_residency_bar.vl.json";
+        const spec_bar_2010 = "hw1/elk_hunt_days_by_residency_bar.vl.json";
         vegaEmbed("#vis_bar_2010", spec_bar_2010)
             .then(result => console.log(result))
             .catch(console.warn);
 
-        const spec_bar_2020 = "elk_hunt_days_by_residency_normalized.vl.json";
+        const spec_bar_2020 = "hw1/elk_hunt_days_by_residency_normalized.vl.json";
         vegaEmbed("#vis_bar_2020", spec_bar_2020)
             .then(result => console.log(result))
             .catch(console.warn);

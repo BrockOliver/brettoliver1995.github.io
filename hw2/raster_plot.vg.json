@@ -14,20 +14,20 @@
       ]}
     },
     {
-      "name": "scale", "value": 685,
-      "bind": {"input": "range", "min": 650, "max": 1000, "step": 5}
+      "name": "scale", "value": 110,
+      "bind": {"input": "range", "min": 50, "max": 800, "step": 5}
     },
     {
-      "name": "rotate0", "value": 101,
-      "bind": {"input": "range", "min": 90, "max": 110, "step": 1}
+      "name": "rotate0", "value": 0,
+      "bind": {"input": "range", "min": -180, "max": 180, "step": 1}
     },
     {
-      "name": "rotate1", "value": 322,
-      "bind": {"input": "range", "min": 320, "max": 330, "step": 1}
+      "name": "rotate1", "value": 0,
+      "bind": {"input": "range", "min": 0, "max": 360, "step": 1}
     },
     {
       "name": "rotate2", "value": 0,
-      "bind": {"input": "range", "min": 0, "max": 0, "step": 1}
+      "bind": {"input": "range", "min": 0, "max": 360, "step": 1}
     },
     {
       "name": "opacity", "value": 0.5,
@@ -49,7 +49,7 @@
   "data": [
     {
       "name": "snow",
-      "url": "data/feb_2019_snow_depth.json"
+      "url": "hw2/data/feb_2019_snow_depth.json"
     },
     {
       "name": "contours",
@@ -62,9 +62,9 @@
       ]
     },
     {
-      "name": "us",
-      "url": "data/gz_2010_us_040_00_500k.json",
-      "format": {"type": "topojson", "feature": "states"}
+      "name": "world",
+      "url": "hw2/data/world-110m.json",
+      "format": {"type": "topojson", "feature": "countries"}
     }
   ],
 
@@ -91,7 +91,7 @@
     {
       "type": "shape",
       "clip": true,
-      "from": {"data": "us"},
+      "from": {"data": "world"},
       "encode": {
         "update": {
           "strokeWidth": {"value": 1},

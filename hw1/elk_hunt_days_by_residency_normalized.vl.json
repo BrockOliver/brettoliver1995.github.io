@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "",
-  "data": { "url": "data/elk_RvN_hunt_days.csv"},
+  "data": { "url": "hw1/data/elk_RvN_hunt_days.csv"},
   "mark": "bar",
   "width": {"step": 17},
   "encoding": {
