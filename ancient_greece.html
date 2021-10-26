@@ -3,30 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
-    <title>Global Snow</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <title>Brett Polis Plot</title>
 </head>
 <body>
-<title>Ancient Greece</title>
-</head>
+<center>
+    <h5>Hypothesis: Bias in the historical record creates problems in this dataset. Greater Stasis is attributed to sites with greater prominence</h5>
+</center>
 
-    <h5>Hypothesis: Stasis Decreases with Elevation</h5><br> <br>
-<div id="global_raster"></div>
-<div id="continental_raster"></div>
+
+</body>
+<!--- Observe there are data collected from
+# https://github.com/simonepri/geo-maps
+# presented in this assignment. --->
+
+<div id="polis_geographic"></div>
 <script>
-    vega.scheme('brett_palette', ['#e0b0a4', '#c872f3', '#6582f5', '#5febff']);
-    const plot_spec = "hw2/raster_plot.vg.json";
-    vegaEmbed("#global_raster", plot_spec)
-        // result.view provides access to the Vega View API
-        .then(result => console.log(result))
-        .catch(console.warn);
-    const plot_spec_mt = "hw2/MT_snow_raster_plot.vg.json";
-    vegaEmbed("#continental_raster", plot_spec_mt)
-        // result.view provides access to the Vega View API
+    const spec_polis = "hw3/polis_dual.vg.json";
+    vegaEmbed("#polis_geographic", spec_polis)
         .then(result => console.log(result))
         .catch(console.warn);
 </script>
-<p style="font-size: 12px">
-    Data provided by Professor Scott Arcenas of the University of Montana History Department <a href="https://portal.nccs.nasa.gov/datashare/">here:</a></p>
-</body>
+
 </html>

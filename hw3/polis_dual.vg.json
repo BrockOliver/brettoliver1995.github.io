@@ -1,0 +1,301 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A gallery of maps showcasing different cartographic projections.",
+  "autosize": "pad",
+
+  "signals": [
+    { "name": "mapWidth", "value": 600},
+    { "name": "mapHeight", "value": 400},
+    { "name": "projScale", "value": 45},
+    { "name": "projTranslate", "update": "[mapWidth / 2, mapHeight / 2]" },
+    {
+      "name": "ColorAs",
+      "value": "staseis",
+      "bind": {
+        "input": "select",
+        "options": ["prom 1",
+          "staseis"
+        ]
+      }
+    },
+    {
+      "name": "scale", "value": 800,
+      "bind": {"input": "range", "min": 50, "max": 2000, "step": 5}
+    },
+    {
+      "name": "rotate0", "value": 0,
+      "bind": {"input": "range", "min": 0, "max": 10, "step": 1}
+    },
+    {
+      "name": "rotate1", "value": 3,
+      "bind": {"input": "range", "min": 0, "max": 10, "step": 1}
+    },
+    {
+      "name": "rotate2", "value": 0,
+      "bind": {"input": "range", "min": 0, "max": 10, "step": 1}
+    },
+    {
+      "name": "point size", "value": 0.5,
+      "bind": {"input": "range", "min": 0, "max": 1, "step": 0.01}
+    },
+    {
+      "name": "stop", "value": 1
+    }
+  ],
+
+  "data": [
+    {
+      "name": "projections",
+      "values": [
+        {"type":"mercator","scale":800,"center":[34,36], "label": "Mediterranean"}
+      ]
+    },
+    {
+      "name": "world",
+      "url": "data/earth-coastlines-500m.geo.json"
+    },
+    {
+      "name": "rivers",
+      "url": "data/earth-rivers-500m.geo.json"
+    },
+    {
+      "name": "graticule",
+      "transform": [
+        { "type": "graticule" }
+      ]
+    },
+    {
+      "name": "sphere",
+      "values": [{"type": "Sphere"}]
+    },
+    {
+      "name": "labelOffsets",
+      "values": [
+        {"dx": -1, "dy": -1},
+        {"dx": -1, "dy": 1},
+        {"dx": 1, "dy": -1},
+        {"dx": 1, "dy": 1}
+      ]
+    },
+    {
+      "name": "polis",
+      "url": "data/polis.json",
+      "format": {
+        "type": "json",
+        "property": "features"
+      },
+      "transform": [{"type":"filter","expr":"datum.properties[ColorAs]>0"}]
+    },
+    {
+      "name": "polis_no",
+      "url": "data/polis.json",
+      "format": {
+        "type": "json",
+        "property": "features"
+      },
+      "transform": [{"type":"filter","expr":"datum.properties[ColorAs]==0"}]
+    },
+    {
+      "name": "pulldown",
+      "url": "data/polis.json",
+      "format": {
+        "type": "json",
+        "property": "features"
+      },
+      "transform": [{"type":"formula","as":"pulldown","expr":"datum.properties[ColorAs] > 0 ? datum.properties[ColorAs] : null"}]
+    }
+  ],
+
+  "layout": {
+    "columns": 2,
+    "padding": 10
+  },
+  "scales": [
+    {
+      "name": "color",
+      "type": "quantize",
+      "domain": [0, 20],
+      "range": {"scheme": "brett_palette","count": 5}
+    },
+    {
+      "name": "size",
+      "type": "sqrt",
+      "domain": [0, 100],
+      "range": [0, {"signal": "point size"}]
+    },
+    {
+      "name": "color2",
+      "type": "quantize",
+      "domain": {"data": "pulldown", "field": "pulldown"},
+      "range": {"scheme": "brett_palette","count": 5}
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {"data": "projections"},
+
+      "signals": [
+        {"name": "width", "update": "mapWidth"},
+        {"name": "height", "update": "mapHeight"}
+      ],
+
+      "encode": {
+        "enter": {
+          "width": {"signal": "mapWidth"},
+          "height": {"signal": "mapHeight"},
+          "clip": {"value": true}
+        }
+      },
+
+      "projections": [
+        {
+          "name": "projection",
+          "type": {"signal": "parent.type"},
+          "scale": {"signal": "parent.scale"},
+          "scale": {"signal": "scale"},
+          "rotate": {"signal": "[rotate0, rotate1, rotate2]"},
+          "center": {"signal": "parent.center"}
+        }
+      ],
+
+      "marks": [
+
+        {
+          "type": "shape",
+          "from": {"data": "sphere"},
+          "encode": {
+            "enter": {
+              "fill": {"value": "aliceblue"}
+            }
+          },
+          "transform": [
+            { "type": "geoshape", "projection": "projection" }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "world"},
+          "clip": {"sphere": "projection"},
+          "encode": {
+            "enter": {
+              "strokeWidth": {"value": 0.25},
+              "stroke": {"value": "#888"},
+              "fill": {"value": "Wheat"}
+            }
+          },
+          "transform": [
+            { "type": "geoshape", "projection": "projection" }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "graticule"},
+          "clip": {"sphere": "projection"},
+          "interactive": false,
+          "encode": {
+            "enter": {
+              "strokeWidth": {"value": 1},
+              "stroke": {"value": "#ddd"}
+            }
+          },
+          "transform": [
+            { "type": "geoshape", "projection": "projection" }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "pulldown"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 1},
+              "fill": {"scale": "color2", "field": "pulldown"}
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection",
+              "pointRadius":2
+            }
+          ]
+        },
+        {
+          "type": "shape",
+          "from": {"data": "polis_no"},
+          "encode": {
+            "update": {
+              "opacity": {"value": 0.4},
+              "fill": {"value": "black"}
+
+            }
+          },
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection",
+              "pointRadius": {"expr": "scale('point size', exp(datum.properties.mag))"}
+            }
+          ],
+          "transform": [
+            {
+              "type": "geoshape",
+              "projection": "projection",
+              "pointRadius":0.75
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "from": {"data": "labelOffsets"},
+          "encode": {
+            "enter": {
+              "fill": {"value": "white"},
+              "dx": {"field": "dx"},
+              "dy": {"field": "dy"},
+              "x": {"value": 5},
+              "y": {"signal": "mapHeight - 5"},
+              "baseline": {"value": "bottom"},
+              "fontSize": {"value": 14},
+              "fontWeight": {"value": "bold"},
+              "text": {"signal": "parent.label"}
+            }
+          }
+        },
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "fill": {"value": "black"},
+              "x": {"value": 5},
+              "y": {"signal": "mapHeight - 5"},
+              "baseline": {"value": "bottom"},
+              "fontSize": {"value": 14},
+              "fontWeight": {"value": "bold"},
+              "text": {"signal": "parent.label"}
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "title": {"signal": "ColorAs"},
+      "fill": "color2",
+      "orient": "bottom",
+      "offset": 5,
+      "type": "gradient",
+      "gradientLength": 300,
+      "gradientThickness": 12,
+      "titlePadding": 10,
+      "titleOrient": "left",
+      "titleAnchor": "end",
+      "direction": "horizontal"
+    }
+  ],
+
+  "config": {
+    "legend": {"layout": {"anchor": "middle"}}
+  }
+}

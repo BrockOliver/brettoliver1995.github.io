@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Stasis and Prominence of Greek Poleis",
+  "description": "Stasis in Ancient Greece ",
+  "data": {"url": "data/polis_filtered.csv"},
+  "width": 600,
+  "height": 400,
+  "mark": {
+    "type": "point",
+    "point": true
+  },
+  "encoding": {
+    "x": {"field": "prom 1", "type": "quantitative", "title":"prominence"},
+    "y": {"field": "staseis","type": "quantitative","title": "staseis",
+    "scale": {"zero": false}}
+  }
+}
