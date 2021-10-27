@@ -10,9 +10,7 @@
 
 
     <h5>Data Bias Assoicated with Stasis in Ancient Greece
-    </h5>In this dataset Stasis can only be observed where there is a record of it. This creates bias in the record that attributes stasis <br>
-    to polleis with higher prominence. We should see that Stasis and prominence have a positive correlation, which is tested with<br>
-    a histogram and r-squared value of polleis vs stasis.<br>
+    </h5>Stasis appears more frequently in the historical record in poleis with higher prominence. <br>Higher prominence indicates that more information is recorded about a given Pollis, including information about Stasis.<br> This could create a bias in the historical record and influence the way that we study Stosis.<br>
 
 <br>
 
@@ -20,6 +18,9 @@
 
 <div id="polis_geographic"></div>
 <div id="vis_time_series"></div>
+<div id="vis_histo"></div>
+<br>
+<br>
 
 <table>
     <thead>
@@ -28,21 +29,23 @@
     </thead>
     <tbody>
     <tr>
-        <td><div id="vis_bar_2010"></div></td>
-        <td><div id="vis_bar_2020"></div></td>
     </tr>
     </tbody>
 </table>
 
-<div id="vis_bar">
-
     <p style="font-size: 12px">
-        Data obtained from Professor Scott Arcenas of the University of Montana History Department</a></p>
+        Data obtained from Professor Scott Arcenas of the University of Montana History Department. Original data can be viewed here:<br>
+         <a href="https://github.com/brettoliver1995/brettoliver1995.github.io/blob/main/hw3/data/polis_filtered.csv">github.com/brettoliver1995/brettoliver1995.github.io/blob/main/hw3/data/polis_filtered.csv</a></p>
 
     <script>
-        vega.scheme('brett_palette', ['#880a36', '#2fe848', '#0431e3', '#0af1c7']);
+        vega.scheme('brett_palette', ['#0d65c9', '#a62bec', '#e80e82', '#f14f0a']);
         const spec_time_series = "stasis_and_prominence_scatter_regression.vl.json";
         vegaEmbed("#vis_time_series", spec_time_series)
+            .then(result => console.log(result))
+            .catch(console.warn);
+
+        const spec_histo = "marginal_hist.vl.json";
+        vegaEmbed("#vis_histo", spec_histo)
             .then(result => console.log(result))
             .catch(console.warn);
 

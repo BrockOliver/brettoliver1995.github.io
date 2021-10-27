@@ -20,23 +20,23 @@
     },
     {
       "name": "scale", "value": 800,
-      "bind": {"input": "range", "min": 50, "max": 2000, "step": 5}
+      "bind": {"input": "range", "min": 800, "max": 2000, "step": 5}
     },
     {
       "name": "rotate0", "value": 0,
-      "bind": {"input": "range", "min": 0, "max": 10, "step": 1}
+      "bind": {"input": "range", "min": -10, "max": 20, "step": 1}
     },
     {
       "name": "rotate1", "value": 3,
-      "bind": {"input": "range", "min": 0, "max": 10, "step": 1}
+      "bind": {"input": "range", "min": -10, "max": 20, "step": 1}
     },
     {
       "name": "rotate2", "value": 0,
-      "bind": {"input": "range", "min": 0, "max": 10, "step": 1}
+      "bind": {"input": "range", "min": 0, "max": 20, "step": 1}
     },
     {
       "name": "point size", "value": 0.5,
-      "bind": {"input": "range", "min": 0, "max": 1, "step": 0.01}
+      "bind": {"input": "range", "min": 0, "max": 10, "step": 0.01}
     },
     {
       "name": "stop", "value": 1
@@ -52,11 +52,7 @@
     },
     {
       "name": "world",
-      "url": "data/earth-coastlines-500m.geo.json"
-    },
-    {
-      "name": "rivers",
-      "url": "data/earth-rivers-500m.geo.json"
+      "url": "hw3/data/countries.geo.json"
     },
     {
       "name": "graticule",
@@ -79,7 +75,7 @@
     },
     {
       "name": "polis",
-      "url": "data/polis.json",
+      "url": "hw3/data/polis.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -88,7 +84,7 @@
     },
     {
       "name": "polis_no",
-      "url": "data/polis.json",
+      "url": "hw3/data/polis.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -97,7 +93,7 @@
     },
     {
       "name": "pulldown",
-      "url": "data/polis.json",
+      "url": "hw3/data/polis.json",
       "format": {
         "type": "json",
         "property": "features"
@@ -118,9 +114,9 @@
       "range": {"scheme": "brett_palette","count": 5}
     },
     {
-      "name": "size",
+      "name": "point size",
       "type": "sqrt",
-      "domain": [0, 100],
+      "domain": [0, 3],
       "range": [0, {"signal": "point size"}]
     },
     {
@@ -134,7 +130,6 @@
     {
       "type": "group",
       "from": {"data": "projections"},
-
       "signals": [
         {"name": "width", "update": "mapWidth"},
         {"name": "height", "update": "mapHeight"}
@@ -160,7 +155,6 @@
       ],
 
       "marks": [
-
         {
           "type": "shape",
           "from": {"data": "sphere"},

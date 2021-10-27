@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "hw3/data/polis_filtered.csv"},
+  "spacing": 15,
+  "bounds": "flush",
+  "vconcat": [{
+    "mark": "bar",
+    "height": 200,
+    "encoding": {
+      "x": {
+        "bin": true,
+        "field": "staseis",
+        "axis": null
+      },
+      "y": {
+        "aggregate": "count",
+        "scale": {
+          "domain": [0,1000]
+        },
+        "title": ""
+      }
+    }
+  }, {
+    "spacing": 15,
+    "bounds": "flush",
+    "hconcat": [{
+      "mark": "rect",
+      "encoding": {
+        "x": {"bin": true, "field": "prom 1"},
+        "y": {"bin": true, "field": "staseis"},
+        "color": {"aggregate": "count"}
+      }
+    }, {
+      "mark": "bar",
+      "width": 300,
+      "encoding": {
+        "y": {
+          "bin": true,
+          "field": "prom 1",
+          "axis": null
+        },
+        "x": {
+          "aggregate": "count",
+          "scale": {"domain": [0,1000]},
+          "title": ""
+        }
+      }
+    }]
+  }],
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

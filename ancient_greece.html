@@ -1,30 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-10">
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-    <title>Brett Polis Plot</title>
+    <title>Ancient Greece</title>
 </head>
+
+
+<h5>Data Bias Assoicated with Stasis in Ancient Greece
+</h5>Stasis appears more frequently in the historical record in poleis with higher prominence. <br>Higher prominence indicates that more information is recorded about a given Pollis, including information about Stasis.<br> This could create a bias in the historical record and influence the way that we study Stosis.<br>
+
+<br>
+
 <body>
-<center>
-    <h5>Hypothesis: Bias in the historical record creates problems in this dataset. Greater Stasis is attributed to sites with greater prominence</h5>
-</center>
-
-
-</body>
-<!--- Observe there are data collected from
-# https://github.com/simonepri/geo-maps
-# presented in this assignment. --->
 
 <div id="polis_geographic"></div>
+<div id="vis_time_series"></div>
+<div id="vis_histo"></div>
+<br>
+<br>
+
+<table>
+    <thead>
+    <tr>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    </tr>
+    </tbody>
+</table>
+
+<p style="font-size: 12px">
+    Data obtained from Professor Scott Arcenas of the University of Montana History Department. Original data can be viewed here:<br>
+    <a href="https://github.com/brettoliver1995/brettoliver1995.github.io/blob/main/hw3/data/polis_filtered.csv">github.com/brettoliver1995/brettoliver1995.github.io/blob/main/hw3/data/polis_filtered.csv</a></p>
+
 <script>
+    vega.scheme('brett_palette', ['#0d65c9', '#a62bec', '#e80e82', '#f14f0a']);
+    const spec_time_series = "hw3/stasis_and_prominence_scatter_regression.vl.json";
+    vegaEmbed("#vis_time_series", spec_time_series)
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+    const spec_histo = "hw3/marginal_hist.vl.json";
+    vegaEmbed("#vis_histo", spec_histo)
+        .then(result => console.log(result))
+        .catch(console.warn);
+
     const spec_polis = "hw3/polis_dual.vg.json";
     vegaEmbed("#polis_geographic", spec_polis)
         .then(result => console.log(result))
         .catch(console.warn);
-</script>
 
-</html>
+
+</script>
+</body>
