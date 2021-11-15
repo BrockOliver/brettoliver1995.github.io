@@ -76,7 +76,7 @@
         "update": {
           "x": {"scale": "position", "field": "order"},
           "y": {"value": 0},
-          "size": {"field": "degree", "mult": 5, "offset": 10},
+          "size": {"field": "degree", "mult": 5, "offset": 8},
           "fill": {"scale": "color", "field": "group"}
         }
       }
@@ -87,7 +87,7 @@
       "encode": {
         "update": {
           "stroke": {"value": "#000"},
-          "strokeOpacity": {"value": 0.2},
+          "strokeOpacity": {"value": 0.3},
           "strokeWidth": {"field": "value"}
         }
       },
