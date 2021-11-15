@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
+    <title>Publication Networks</title>
+</head>
+<body>
+<title>Global snow pack in February 2019</title>
+</head>
+
+<h5>Hypothesis: Networks<br> connection</h5><br> <br>
+<div id="pubnet"></div>
+<script>
+    vega.scheme('brett_palette', ['#e0b0a4', '#c872f3', '#6582f5', '#5febff']);
+    const plot_spec = "hw4/arc-diagram.vg.json";
+    vegaEmbed("#pubnet", plot_spec)
+        // result.view provides access to the Vega View API
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+</script>
+<p style="font-size: 12px">
+   Network data obtained <a href="https://portal.nccs.nasa.gov/datashare/">here:</a></p>
+</body>
+</html>
