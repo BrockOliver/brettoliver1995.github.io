@@ -72,7 +72,42 @@
       "domain": {"data": "nodes", "field": "group"}
     }
   ],
-
+  "legends": [
+    {
+      "title": ["first publication", "groups"],
+      "fill": "color",
+      "orient": "bottom-right",
+      "labelBaseline": "middle",
+      "encode": {
+        "title": {
+          "update": {
+            "fontSize": {"value": 10}
+          }
+        },
+        "labels": {
+          "interactive": true,
+          "update": {
+            "fontSize": {"value": 12},
+            "fill": {"value": "black"}
+          },
+          "hover": {
+            "fill": {"value": "firebrick"}
+          }
+        },
+        "symbols": {
+          "update": {
+            "stroke": {"value": "transparent"}
+          }
+        },
+        "legend": {
+          "update": {
+            "stroke": {"value": "#ccc"},
+            "strokeWidth": {"value": 1.5}
+          }
+        }
+      }
+    }
+  ],
   "marks": [
     {
       "type": "symbol",
