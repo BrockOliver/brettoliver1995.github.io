@@ -10,8 +10,10 @@
 <title>"Publishg Networks of top papers with keywords "GPS Water Storage"</title>
 </head>
 
-<h5>Hypothesis: Authors in the field of hydrogeodessy are connected to their coauthors by multiple publications<br> </h5><br> <br>
+<h5>Hypothesis: Most publications in the field of hydrogeodesy are connected by collaboration across multiple papers<br> </h5><br> <br>
+
 <div id="pubnet"></div>
+
 <script>
     vega.scheme('brett_palette', ['#e0b0a4', '#c872f3', '#6582f5', '#5febff']);
     const plot_spec = "hw4/arc-diagram.vg.json";
@@ -24,7 +26,7 @@
 <p style="font-size: 12px">
    Network data obtained <a href="https://github.com/brettoliver1995/brettoliver1995.github.io/blob/main/hw4/data/bio_py_eg.ipynb">here:</a></p>
 <p style="font-size: 12px">Used the Scholarly python module to search for all papers on Google Scholar with the keywords "Geodetic water storage", which returned 28 papers. <br>
-Scholarly sorts data into tuples of coauthor pairs with the following format: [('author 1', 'author 2), ('author 1, author 3', 'author 2, author 2', et..)},<br>
-Used pythonic dictionaries to convert data from scholarly into a JSON-readable type (shown in the bottom block of code).
+Scholarly sorts data into tuples of coauthor pairs with the following format: [('author 1', 'author 2), ('author 1, author 3', 'author 2, author 2', et..)],<br>
+Used pythonic dictionaries to convert data from scholarly into a JSON-readable type (shown in the bottom block of code). "dd" is the final dictionary used for visualization.
 </body>
 </html>

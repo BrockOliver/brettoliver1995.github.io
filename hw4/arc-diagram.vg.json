@@ -1,9 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "An arc diagram depicting character co-occurrence in the novel Les Misérables.",
-  "width": 1500,
+  "width": 1400,
   "padding": 5,
-
+  "signals": [
+    {
+      "name": "active", "value": null,
+      "on": [
+        { "events": "text:mouseover", "update": "datum.index" },
+        { "events": "mouseover[!event.item]", "update": "null" }
+      ]
+    },
+    { "name": "colorIn", "value": "firebrick" },
+    { "name": "colorOut", "value": "forestgreen" }
+  ],
   "data": [
     {
       "name": "edges",
@@ -76,7 +86,7 @@
         "update": {
           "x": {"scale": "position", "field": "order"},
           "y": {"value": 0},
-          "size": {"field": "degree", "mult": 5, "offset": 8},
+          "size": {"field": "degree", "value": 6, "offset": 80},
           "fill": {"scale": "color", "field": "group"}
         }
       }
