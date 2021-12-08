@@ -35,7 +35,7 @@
   "data": [
     {
       "name": "temperature",
-      "url": "data/vega-datasets/data/xbev-weather-hourly-normals.csv",
+      "url": "data/xbev-weather-hourly-normals.csv",
       "format": {"type": "csv", "parse": {"temperature": "number", "date": "date", "elevation_m":  "number", "snow_d_m":  "number"}},
       "transform": [
         {"type": "formula", "as": "hour", "expr": "hours(datum.date)"},
