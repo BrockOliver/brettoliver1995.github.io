@@ -6,16 +6,51 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <title>High Dimensional Data</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 600px auto;
+            padding: 30px;
+        }
+        .grid-item {
+            padding: 10px;
+
+        }
+        table.center {
+            margin-left: 620px;
+            margin-right: auto;
+        }
+    </style>
 
 </head>
-<h5>Hypothesis: Climate stations at higher elevations recieve more snow than those at lower elevations. Furthermore, snow is present </br>
-    at these stations for a larger part of the year than their low-elevation counterparts.</h5>
 
-<img alt="HTML5 Icon" src="/data/Lochsa_selway_network_layout.jpg" style="width:128px;height:128px;">
+<div class="grid-container">
+    <div class="grid-item">
+        <br>
+        <h1>Hypothesis:</h1> <h2>High elevations in the Bitterroot Mountains recieve more snow than low elevations. Furthermore, snow is present
+        at high elevations for a larger part of the year than it is at low elevations.</h2><br><br><h2>Background:</h2><h3> Between 2019 and 2021 the University
+        of Montana installed a network of GNSS and climate stations to observe crustal deformation due to hydrologic loading in the Bitterroot Mountains of Montana and Idaho.
+        The primary driver of hydrologic loading in the Bitterroot Mountnains is winter snowpack, and it's important to understand how snow is distrubted
+        across this area. The following visualization shows snowpack at four climate stations installed across a range of elevations (XBEV, XELK, XMOC, XSYA. Shown with yellow
+        triangles on the map).</h3><p> </p></div>
+    <div class="grid-item"><img src= "https://raw.githubusercontent.com/brettoliver1995/brettoliver1995.github.io/main/hw5/Lochsa_selway_network_layout.jpg" alt="map Icon" ></div>
+    <div class="grid-item"><h5>Data Source: All data were recorded by climate stations in the University of Montana's Selway/Lochsa GNSS and Meteorologic Network.
+        I pulled and processed data used for this visualization.</div>
+    <div class = "grid-item"><div id="vis_heat_map"></div>
+</div>
 
+<br>
+<br>
+<br>
+
+
+<table class="center">
 <tr>
     <td><div id="vis_heat_map"></div></td>
-</tr>
+</tr></table>
+
+<br>
+<br>
 
 <script>
 
