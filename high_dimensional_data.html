@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-10">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>High Dimensional Data</title>
+
+</head>
+<h5>Hypothesis: Climate stations at higher elevations recieve more snow than those at lower elevations. Furthermore, snow is present </br>
+    at these stations for a larger part of the year than their low-elevation counterparts.</h5>
+
+<img alt="HTML5 Icon" src="/data/Lochsa_selway_network_layout.jpg" style="width:128px;height:128px;">
+
+<tr>
+    <td><div id="vis_heat_map"></div></td>
+</tr>
+
+<script>
+
+    const spec_bar_2020 = "hw5/fres_network_climate.vg.json";
+    vegaEmbed("#vis_heat_map", spec_bar_2020)
+        .then(result => console.log(result))
+        .catch(console.warn);
+
+</script>
