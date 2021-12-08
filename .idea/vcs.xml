@@ -3,7 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hw5/data/old/vega-datasets" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/hw5/data/vega-datasets" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/hw5/old/vega-datasets" vcs="Git" />
   </component>
 </project>
