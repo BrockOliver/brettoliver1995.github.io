@@ -1,0 +1,113 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A heatmap showing average daily temperatures at XBEV in the Bitterroot/Selway Wilderness of Idaho.",
+  "width": 800,
+  "height": 500,
+  "padding": 5,
+
+  "title": {
+    "text": "Snow depth across the Lochsa/Selway network 10/07/2020 and 06/30/2021",
+    "anchor": "middle",
+    "fontSize": 16,
+    "frame": "group",
+    "offset": 4
+  },
+
+  "signals": [
+    {
+      "name": "palette", "value": "Magma",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Viridis",
+          "Magma",
+          "Inferno",
+          "Plasma",
+          "Cividis"
+        ]
+      }
+    },
+    {
+      "name": "reverse", "value": false, "bind": {"input": "checkbox"}
+    }
+  ],
+
+  "data": [
+    {
+      "name": "temperature",
+      "url": "data/xbev-weather-hourly-normals.csv",
+      "format": {"type": "csv", "parse": {"temperature": "number", "date": "date", "elevation_m":  "number", "snow_d_m":  "number"}},
+      "transform": [
+        {"type": "formula", "as": "hour", "expr": "hours(datum.date)"},
+        { "type": "formula", "as": "day",
+          "expr": "datetime(year(datum.date), month(datum.date), date(datum.date))"}
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "x",
+      "type": "time",
+      "domain": {"data": "temperature", "field": "day"},
+      "range": "width"
+    },
+    {
+      "name": "y",
+      "type": "band",
+      "domain": [
+        2157, 2095, 2040, 1073
+      ],
+      "range": "height"
+    },
+    {
+      "name": "color",
+      "type": "linear",
+      "range": {"scheme": {"signal": "palette"}},
+      "domain": {"data": "temperature", "field": "snow_d_m"},
+      "reverse": {"signal": "reverse"},
+      "zero": false, "nice": true
+    }
+  ],
+
+  "axes": [
+    {"orient": "bottom", "scale": "x", "domain": false, "title": "Month (2020/2021)", "format": "%b"},
+    {
+      "orient": "left", "scale": "y", "domain": false, "title": "Elevation (m)",
+      "encode": {
+        "labels": {
+        }
+      }
+    }
+  ],
+
+  "legends": [
+    {
+      "fill": "color",
+      "type": "gradient",
+      "title": "Snow Depth (m)",
+      "titleFontSize": 12,
+      "titlePadding": 4,
+      "gradientLength": {"signal": "height - 16"}
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "temperature"},
+      "encode": {
+        "enter": {
+          "x": {"scale": "x", "field": "day"},
+          "y": {"scale": "y", "field": "elevation_m"},
+          "width": {"value": 5},
+          "height": {"scale": "y", "band": 1},
+          "tooltip": {"signal": "datum.station + ': ' + timeFormat(datum.date, '%b %d 20%y') + ': ' + datum.temperature + '°C'"}
+        },
+        "update": {
+          "fill": {"scale": "color", "field": "snow_d_m"}
+        }
+      }
+    }
+  ]
+}
